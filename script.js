@@ -28,8 +28,6 @@ socialLinks.forEach(link => {
 });
 
 // --- ACHIEVEMENTS TIMELINE ---
-
-// NOTE: titles is now an ARRAY. You can add one or many strings.
 const achievements = [
     {
         date: "January 2026",
@@ -42,7 +40,7 @@ const achievements = [
     {
         date: "April 2025",
         titles: [
-            "Semi-Automated Multi-Node Windows Deployment",
+            "Project: Semi-Automated Multi-Node Windows Deployment",
             "Mimo Certificate of Completion: HTML"
         ],
         link: "https://github.com/leonampa/multinode-windows-deploy",
@@ -51,25 +49,25 @@ const achievements = [
     {
         date: "January 2025",
         titles: [
-            "ALCE C2 (98%) Proficiency", 
+            "Advanced Level Certificate in English (ALCE, Level C2, Scored 98%)", 
             "Mimo Certificate of Completion: Python"
         ]
     },
     {
         date: "December 2024",
-        titles: ["ECPE C2"]
+        titles: ["Examination for the Certificate of Proficiency in English (ECPE, Level C2)"]
     },
     {
         date: "June 2023",
-        titles: ["ABLE B2"]
+        titles: ["ABLE B2 Certificate of English Language Competence (Level B2)"]
     },
     {
         date: "May 2023",
-        titles: ["ECCE B2"]
+        titles: ["Examination for the Certificate of Competency in English (ECCE, Level B2)"]
     },
     {
         date: "March 2023",
-        titles: ["1st Rebuttal & 2nd as Team, 5th QLS Debate (Level B1)"]
+        titles: ["Placed 1st as Rebuttal Speaker, and 2nd as a Team, in the 5th QLS Debate (Level B1)"]
     }
 ];
 
