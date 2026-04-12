@@ -1,45 +1,75 @@
+// --- DYNAMIC SOCIAL LINKS ---
+const socialLinks = [
+    {
+        name: "GitHub",
+        url: "https://github.com/leonampa",
+        icon: "github-icon.png"
+    },
+];
+
+const linksContainer = document.getElementById('social-links');
+
+socialLinks.forEach(link => {
+    const a = document.createElement('a');
+    a.href = link.url;
+    a.target = '_blank';
+
+    const img = document.createElement('img');
+    img.src = link.icon;
+    img.className = 'link-icon';
+    img.alt = `${link.name} icon`;
+
+    const span = document.createElement('span');
+    span.textContent = link.name;
+
+    a.appendChild(img);
+    a.appendChild(span);
+    linksContainer.appendChild(a);
+});
+
+// --- ACHIEVEMENTS TIMELINE ---
+
+// NOTE: titles is now an ARRAY. You can add one or many strings.
 const achievements = [
     {
         date: "January 2026",
-        entries: [{ title: "Gemini Certified Student K12" }]
+        titles: ["Gemini Certified Student K12"]
     },
     {
         date: "September 2025",
-        entries: [{ title: "Mimo Certificate of Completion: JavaScript" }]
+        titles: ["Mimo Certificate of Completion: JavaScript"]
     },
     {
         date: "April 2025",
-        entries: [
-            { 
-                title: "Semi-Automated Multi-Node Windows Deployment", 
-                link: "https://github.com/leonampa/multinode-windows-deploy",
-                description: "GitHub Project" 
-            },
-            { title: "Mimo Certificate of Completion: HTML" }
-        ]
+        titles: [
+            "Semi-Automated Multi-Node Windows Deployment",
+            "Mimo Certificate of Completion: HTML"
+        ],
+        link: "https://github.com/leonampa/multinode-windows-deploy",
+        description: "GitHub Project & Certification"
     },
     {
         date: "January 2025",
-        entries: [
-            { title: "ALCE C2 (98%)" },
-            { title: "Mimo Certificate of Completion: Python" }
+        titles: [
+            "ALCE C2 (98%) Proficiency", 
+            "Mimo Certificate of Completion: Python"
         ]
     },
     {
         date: "December 2024",
-        entries: [{ title: "ECPE C2" }]
+        titles: ["ECPE C2"]
     },
     {
         date: "June 2023",
-        entries: [{ title: "ABLE B2" }]
+        titles: ["ABLE B2"]
     },
     {
         date: "May 2023",
-        entries: [{ title: "ECCE B2" }]
+        titles: ["ECCE B2"]
     },
     {
         date: "March 2023",
-        entries: [{ title: "1st Rebuttal & 2nd as Team, 5th QLS Debate (Level B1)" }]
+        titles: ["1st Rebuttal & 2nd as Team, 5th QLS Debate (Level B1)"]
     }
 ];
 
@@ -52,38 +82,38 @@ achievements.forEach(item => {
     const dateDiv = document.createElement('div');
     dateDiv.className = 'timeline-date';
     dateDiv.textContent = item.date;
-    itemDiv.appendChild(dateDiv);
 
-    // Loop through each entry for this specific date
-    item.entries.forEach((entry, index) => {
-        const contentDiv = document.createElement('div');
-        contentDiv.className = 'timeline-content';
-        
-        // Add a small top margin if it's the 2nd+ item in the same date
-        if (index > 0) contentDiv.style.marginTop = "10px";
-
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'timeline-content';
+    
+    // NEW: Loop through the array of titles
+    item.titles.forEach(titleText => {
         const titleH3 = document.createElement('h3');
-        titleH3.textContent = entry.title;
+        titleH3.textContent = titleText;
+        // Add a small bottom margin if there are multiple titles
+        if (item.titles.length > 1) {
+            titleH3.style.marginBottom = "8px";
+        }
         contentDiv.appendChild(titleH3);
-
-        if (entry.description) {
-            const descP = document.createElement('p');
-            descP.textContent = entry.description;
-            descP.style.fontSize = "0.9rem";
-            descP.style.color = "var(--text-muted)";
-            contentDiv.appendChild(descP);
-        }
-
-        if (entry.link) {
-            const linkA = document.createElement('a');
-            linkA.href = entry.link;
-            linkA.target = '_blank';
-            linkA.textContent = 'View Repository →';
-            contentDiv.appendChild(linkA);
-        }
-
-        itemDiv.appendChild(contentDiv);
     });
 
+    if (item.description) {
+        const descP = document.createElement('p');
+        descP.textContent = item.description;
+        descP.style.fontSize = "0.9rem";
+        descP.style.color = "var(--text-muted)";
+        contentDiv.appendChild(descP);
+    }
+
+    if (item.link) {
+        const linkA = document.createElement('a');
+        linkA.href = item.link;
+        linkA.target = '_blank';
+        linkA.textContent = 'View Repository →';
+        contentDiv.appendChild(linkA);
+    }
+
+    itemDiv.appendChild(dateDiv);
+    itemDiv.appendChild(contentDiv);
     timelineContainer.appendChild(itemDiv);
 });
