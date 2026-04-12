@@ -74,44 +74,52 @@ const achievements = [
 const timelineContainer = document.getElementById('timeline');
 
 achievements.forEach(item => {
+    // 1. Create the main wrapper for this date group
     const itemDiv = document.createElement('div');
     itemDiv.className = 'timeline-item';
 
+    // 2. Create the Date (Only once per group)
     const dateDiv = document.createElement('div');
     dateDiv.className = 'timeline-date';
     dateDiv.textContent = item.date;
+    itemDiv.appendChild(dateDiv);
 
-    const contentDiv = document.createElement('div');
-    contentDiv.className = 'timeline-content';
-    
-    // NEW: Loop through the array of titles
-    item.titles.forEach(titleText => {
+    // 3. Loop through the array and create a SEPARATE box for each title
+    item.titles.forEach((titleText, index) => {
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'timeline-content';
+        
+        // Add some spacing between boxes if there's more than one
+        if (index > 0) {
+            contentDiv.style.marginTop = "10px";
+        }
+
         const titleH3 = document.createElement('h3');
         titleH3.textContent = titleText;
-        // Add a small bottom margin if there are multiple titles
-        if (item.titles.length > 1) {
-            titleH3.style.marginBottom = "8px";
-        }
         contentDiv.appendChild(titleH3);
+
+        // Attach description and link ONLY to the first box 
+        // (Or you can move these into the titles array if they need to be unique)
+        if (index === 0) {
+            if (item.description) {
+                const descP = document.createElement('p');
+                descP.textContent = item.description;
+                descP.style.fontSize = "0.9rem";
+                descP.style.color = "var(--text-muted)";
+                contentDiv.appendChild(descP);
+            }
+
+            if (item.link) {
+                const linkA = document.createElement('a');
+                linkA.href = item.link;
+                linkA.target = '_blank';
+                linkA.textContent = 'View Repository →';
+                contentDiv.appendChild(linkA);
+            }
+        }
+
+        itemDiv.appendChild(contentDiv);
     });
 
-    if (item.description) {
-        const descP = document.createElement('p');
-        descP.textContent = item.description;
-        descP.style.fontSize = "0.9rem";
-        descP.style.color = "var(--text-muted)";
-        contentDiv.appendChild(descP);
-    }
-
-    if (item.link) {
-        const linkA = document.createElement('a');
-        linkA.href = item.link;
-        linkA.target = '_blank';
-        linkA.textContent = 'View Repository →';
-        contentDiv.appendChild(linkA);
-    }
-
-    itemDiv.appendChild(dateDiv);
-    itemDiv.appendChild(contentDiv);
     timelineContainer.appendChild(itemDiv);
 });
