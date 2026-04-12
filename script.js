@@ -1,3 +1,40 @@
+// --- DYNAMIC SOCIAL LINKS ---
+const socialLinks = [
+    {
+        name: "GitHub",
+        url: "https://github.com/leonampa",
+        icon: "github-icon.png" // TODO
+    },
+];
+
+const linksContainer = document.getElementById('social-links');
+
+socialLinks.forEach(link => {
+    // Create the button (anchor tag)
+    const a = document.createElement('a');
+    a.href = link.url;
+    a.target = '_blank';
+
+    // Create the icon image
+    const img = document.createElement('img');
+    img.src = link.icon;
+    img.className = 'link-icon';
+    img.alt = `${link.name} icon`;
+
+    // Create the text
+    const span = document.createElement('span');
+    span.textContent = link.name;
+
+    // Put it together
+    a.appendChild(img);
+    a.appendChild(span);
+    linksContainer.appendChild(a);
+});
+
+// --- ACHIEVEMENTS TIMELINE (Keep your existing code below this) ---
+// const achievements = [ ... ]
+
+
 // Add new achievements to the top of this list
 const achievements = [
     {
