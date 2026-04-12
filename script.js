@@ -44,7 +44,6 @@ const achievements = [
             "Mimo Certificate of Completion: HTML"
         ],
         link: "https://github.com/leonampa/multinode-windows-deploy",
-        description: "GitHub Project & Certification"
     },
     {
         date: "January 2025",
