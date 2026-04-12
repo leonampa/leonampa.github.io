@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Redirecting...</title>
+    <script>
+        /** * EDIT THIS CONSTANT ONLY 
+         */
+        const targetURL = "https://github.com/leonampa/multinode-windows-deploy";
+
+        // 1. Immediate JavaScript Redirect
+        window.location.replace(targetURL);
+
+        // 2. Fallback: Update the link in the body once the DOM loads
+        window.onload = () => {
+            const link = document.getElementById('manual-link');
+            if (link) {
+                link.href = targetURL;
+                link.textContent = targetURL;
+            }
+        };
+    </script>
+    
+    </head>
+<body style="font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; color: #64748b;">
+    <div style="text-align: center;">
+        <p>Redirecting you to <br> 
+           <a id="manual-link" style="color: #0f172a; font-weight: bold; text-decoration: none;">the destination</a>...
+        </p>
+    </div>
+</body>
+</html>
