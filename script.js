@@ -45,7 +45,10 @@ const achievements = [
     {
         date: "August 2025",
         titles: ["Digital Operations & Marketing Coordinator | Health & Beauty Sector"],
-        description: "• Multi-Channel Content Creation: Developed and deployed a cohesive social media strategy across Facebook, Instagram, and TikTok; utilized Canva to design high-engagement promotional assets showcasing service results. \n • End-to-End E-commerce Management: Independently managed the brand’s e-shop, including inventory reconciliation, stock tracking, and order fulfillment logistics. \n • Customer Experience (CX): Acted as the primary point of contact for customer inquiries; resolved product questions and managed phone-based order processing to ensure high satisfaction rates. \n • Workflow Continuity: Successfully maintained all digital business operations during a full-time staff transition, requiring rapid mastery of internal systems and brand voice."
+        description: " • Multi-Channel Content Creation: Developed and deployed a cohesive social media strategy across Facebook, Instagram, and TikTok; utilized Canva to design high-engagement promotional assets showcasing service results.", 
+        description: " • End-to-End E-commerce Management: Independently managed the brand’s e-shop, including inventory reconciliation, stock tracking, and order fulfillment logistics.",
+        description: " • Customer Experience (CX): Acted as the primary point of contact for customer inquiries; resolved product questions and managed phone-based order processing to ensure high satisfaction rates.",
+        description: " • Workflow Continuity: Successfully maintained all digital business operations during a full-time staff transition, requiring rapid mastery of internal systems and brand voice."
     },
     {
         date: "April 2025",
