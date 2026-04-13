@@ -117,7 +117,7 @@ achievements.forEach(item => {
             if (item.descriptions && Array.isArray(item.descriptions)) {
                 item.descriptions.forEach(descText => {
                     const descP = document.createElement('p');
-                    descP.textContent = "• " + descText;
+                    descP.textContent = descText;
                     descP.style.fontSize = "0.9rem";
                     descP.style.color = "var(--text-muted)";
                     descP.style.marginBottom = "5px";
