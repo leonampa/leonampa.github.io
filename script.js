@@ -45,10 +45,10 @@ const achievements = [
     {
         date: "August 2025",
         titles: ["Digital Operations & Marketing Coordinator | Health & Beauty Sector"],
-        description: " • Multi-Channel Content Creation: Developed and deployed a cohesive social media strategy across Facebook, Instagram, and TikTok; utilized Canva to design high-engagement promotional assets showcasing service results.", 
-        description: " • End-to-End E-commerce Management: Independently managed the brand’s e-shop, including inventory reconciliation, stock tracking, and order fulfillment logistics.",
-        description: " • Customer Experience (CX): Acted as the primary point of contact for customer inquiries; resolved product questions and managed phone-based order processing to ensure high satisfaction rates.",
-        description: " • Workflow Continuity: Successfully maintained all digital business operations during a full-time staff transition, requiring rapid mastery of internal systems and brand voice."
+        descriptions: [" • Multi-Channel Content Creation: Developed and deployed a cohesive social media strategy across Facebook, Instagram, and TikTok; utilized Canva to design high-engagement promotional assets showcasing service results.", 
+        " • End-to-End E-commerce Management: Independently managed the brand’s e-shop, including inventory reconciliation, stock tracking, and order fulfillment logistics.",
+        " • Customer Experience (CX): Acted as the primary point of contact for customer inquiries; resolved product questions and managed phone-based order processing to ensure high satisfaction rates.",
+        " • Workflow Continuity: Successfully maintained all digital business operations during a full-time staff transition, requiring rapid mastery of internal systems and brand voice."]
     },
     {
         date: "April 2025",
@@ -96,12 +96,12 @@ achievements.forEach(item => {
     dateDiv.textContent = item.date;
     itemDiv.appendChild(dateDiv);
 
-    // 3. Loop through the array and create a SEPARATE box for each title
+// 3. Loop through the array and create a SEPARATE box for each title
     item.titles.forEach((titleText, index) => {
         const contentDiv = document.createElement('div');
         contentDiv.className = 'timeline-content';
         
-        // Add some spacing between boxes if there's more than one
+        // Spacing between multiple boxes under the same date
         if (index > 0) {
             contentDiv.style.marginTop = "10px";
         }
@@ -110,15 +110,19 @@ achievements.forEach(item => {
         titleH3.textContent = titleText;
         contentDiv.appendChild(titleH3);
 
-        // Attach description and link ONLY to the first box 
-        // (Or you can move these into the titles array if they need to be unique)
+        // Attach descriptions and link to the relevant box
+        // index === 0 means these only appear in the FIRST box of a group
         if (index === 0) {
-            if (item.description) {
-                const descP = document.createElement('p');
-                descP.textContent = item.description;
-                descP.style.fontSize = "0.9rem";
-                descP.style.color = "var(--text-muted)";
-                contentDiv.appendChild(descP);
+            // Handle multiple description lines (the bullet points)
+            if (item.descriptions && Array.isArray(item.descriptions)) {
+                item.descriptions.forEach(descText => {
+                    const descP = document.createElement('p');
+                    descP.textContent = "• " + descText;
+                    descP.style.fontSize = "0.9rem";
+                    descP.style.color = "var(--text-muted)";
+                    descP.style.marginBottom = "5px";
+                    contentDiv.appendChild(descP);
+                });
             }
 
             if (item.link) {
@@ -132,6 +136,5 @@ achievements.forEach(item => {
 
         itemDiv.appendChild(contentDiv);
     });
-
     timelineContainer.appendChild(itemDiv);
 });
