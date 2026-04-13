@@ -5,6 +5,11 @@ const socialLinks = [
         url: "https://github.com/leonampa",
         icon: "github.png"
     },
+    {
+        name: "Email",
+        url: "mailto:leonidampa@gmail.com",
+        icon: "email.png"
+    }
 ];
 
 const linksContainer = document.getElementById('social-links');
@@ -36,6 +41,11 @@ const achievements = [
     {
         date: "September 2025",
         titles: ["Mimo Certificate of Completion: JavaScript"]
+    },
+    {
+        date: "August 2025",
+        titles: ["Digital Operations & Marketing Coordinator | Health & Beauty Sector"],
+        description: "• Multi-Channel Content Creation: Developed and deployed a cohesive social media strategy across Facebook, Instagram, and TikTok; utilized Canva to design high-engagement promotional assets showcasing service results. \n • End-to-End E-commerce Management: Independently managed the brand’s e-shop, including inventory reconciliation, stock tracking, and order fulfillment logistics. \n • Customer Experience (CX): Acted as the primary point of contact for customer inquiries; resolved product questions and managed phone-based order processing to ensure high satisfaction rates. \n • Workflow Continuity: Successfully maintained all digital business operations during a full-time staff transition, requiring rapid mastery of internal systems and brand voice."
     },
     {
         date: "April 2025",
