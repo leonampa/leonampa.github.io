@@ -9,6 +9,11 @@ const socialLinks = [
         name: "Email",
         url: "mailto:leonidampa@gmail.com",
         icon: "email.png"
+    },
+     {
+        name: "Support",
+        url: "https://leonampa.github.io/support",
+        icon: "help.png"
     }
 ];
 
