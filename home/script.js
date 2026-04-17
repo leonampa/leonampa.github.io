@@ -25,7 +25,7 @@ socialLinks.forEach(link => {
     a.target = '_blank';
 
     const img = document.createElement('img');
-    img.src = link.icon;
+    img.src = "home/" + link.icon;
     img.className = 'link-icon';
     img.alt = `${link.name} icon`;
 
