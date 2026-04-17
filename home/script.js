@@ -56,6 +56,10 @@ const achievements = [
         " • Workflow Continuity: Successfully maintained all digital business operations during a full-time staff transition, requiring rapid mastery of internal systems and brand voice."]
     },
     {
+        date: "May 2025",
+        titles: ["State Certificate of Language Knowledge in German (KPG, Level A2)"]
+    },
+    {
         date: "April 2025",
         titles: [
             "Project: Semi-Automated Multi-Node Windows Deployment",
