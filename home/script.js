@@ -79,14 +79,6 @@ const achievements = [
         titles: ["Examination for the Certificate of Proficiency in English (ECPE, Level C2)"]
     },
     {
-        date: "June 2023",
-        titles: ["ABLE B2 Certificate of English Language Competence (Level B2)"]
-    },
-    {
-        date: "May 2023",
-        titles: ["Examination for the Certificate of Competency in English (ECCE, Level B2)"]
-    },
-    {
         date: "March 2023",
         titles: ["Placed 1st as Rebuttal Speaker, and 2nd as a Team, in the 5th QLS Debate (Level B1)"]
     }
