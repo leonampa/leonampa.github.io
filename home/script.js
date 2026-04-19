@@ -50,10 +50,11 @@ const achievements = [
     {
         date: "August 2025",
         titles: ["Digital Operations & Marketing Coordinator | Health & Beauty Sector"],
-        descriptions: [" • Multi-Channel Content Creation: Developed and deployed a cohesive social media strategy across Facebook, Instagram, and TikTok; utilized Canva to design high-engagement promotional assets showcasing service results.", 
-        " • End-to-End E-commerce Management: Independently managed the brand’s e-shop, including inventory reconciliation, stock tracking, and order fulfillment logistics.",
-        " • Customer Experience (CX): Acted as the primary point of contact for customer inquiries; resolved product questions and managed phone-based order processing to ensure high satisfaction rates.",
-        " • Workflow Continuity: Successfully maintained all digital business operations during a full-time staff transition, requiring rapid mastery of internal systems and brand voice."]
+        descriptions: [
+            " • Multi-Channel Content Creation: Developed and deployed a cohesive social media strategy across Facebook, Instagram, and TikTok; utilized Canva to design high-engagement promotional assets showcasing service results.", 
+            " • End-to-End E-commerce Management: Independently managed the brand’s e-shop, including inventory reconciliation, stock tracking, and order fulfillment logistics.",
+            " • Customer Experience (CX): Acted as the primary point of contact for customer inquiries; resolved product questions and managed phone-based order processing to ensure high satisfaction rates.",
+            " • Workflow Continuity: Successfully maintained all digital business operations during a full-time staff transition, requiring rapid mastery of internal systems and brand voice."]
     },
     {
         date: "May 2025",
@@ -65,12 +66,12 @@ const achievements = [
             "Project: Semi-Automated Multi-Node Windows Deployment",
             "Mimo Certificate of Completion: HTML"
         ],
-link: "https://github.com/leonampa/multinode-windows-deploy",
-descriptions: [
-" • Infrastructure Optimization: Led a zero-budget initiative to repurpose 12 decommissioned desktop PCs, replacing failing hardware in the teachers' lounge and science lab to support a staff of 32 educators.", 
-" • Performance Strategy: Optimized legacy HDD performance by deploying a customized Windows Image, balancing modern application compatibility with significantly improved system responsiveness.", 
-" • Automated Deployment: Engineered a semi-automated provisioning workflow using Windows Server 2019, PXE/WDS, and custom Batch scripting to automate disk partitioning and image application.", 
-" • Operational Impact: Completed the full-scale deployment within one week during academic breaks, establishing a sustainable hot-swap system for future hardware maintenance by non-technical staff."]
+        link: "https://github.com/leonampa/multinode-windows-deploy",
+        descriptions: [
+            " • Infrastructure Optimization: Led a zero-budget initiative to repurpose 12 decommissioned desktop PCs, replacing failing hardware in the teachers' lounge and science lab to support a staff of 32 educators.", 
+            " • Performance Strategy: Optimized legacy HDD performance by deploying a customized Windows Image, balancing modern application compatibility with significantly improved system responsiveness.", 
+            " • Automated Deployment: Engineered a semi-automated provisioning workflow using Windows Server 2019, PXE/WDS, and custom Batch scripting to automate disk partitioning and image application.", 
+            " • Operational Impact: Completed the full-scale deployment within one week during academic breaks, establishing a sustainable hot-swap system for future hardware maintenance by non-technical staff."]
     },
     {
         date: "January 2025",
