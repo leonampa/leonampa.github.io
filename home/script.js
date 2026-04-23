@@ -40,6 +40,17 @@ socialLinks.forEach(link => {
 // --- ACHIEVEMENTS TIMELINE ---
 const achievements = [
     {
+        date: "May 2024 - Present (expected August 2027)",
+        titles: ["IT Operations & Infrastructure Lead | Lyceum"],
+        descriptions: [
+" • Internal Technical Support Lead: Acting as the primary Tier 1 through Tier 3 support lead for 50+ users, managing everything from laptops to servers.",
+" • Hardware Lifecycle Management: Orchestrated the provisioning and deployment of 37 high-performance endpoints for staff/student use, and managed the existing units on AD.",
+" • Network Infrastructure Overhaul: Audited and re-architected a building-wide network to improve uptime and throughput, and replicated it all on Cisco Packet Tracer, for pre-deployment testing and ongoing simulation of physical infrastructure.",
+" • Technical Documentation & Knowledge Base: Authored a comprehensive 30-page Standard Operating Procedure (SOP) covering all infrastructure and disaster recovery information (AD, File Servers, Networking, VoIP, and special systems as requested,  to eliminate 'single point of failure' risks."
+]
+    },
+
+    {
         date: "January 2026",
         titles: ["Gemini Certified Student K12"]
     },
