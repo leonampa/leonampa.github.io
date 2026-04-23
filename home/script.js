@@ -40,7 +40,7 @@ socialLinks.forEach(link => {
 // --- ACHIEVEMENTS TIMELINE ---
 const achievements = [
     {
-        date: "May 2024 - Present (expected August 2027)",
+        date: "September 2024 - Present (expected August 2027)",
         titles: ["IT Operations & Infrastructure Lead | Lyceum"],
         descriptions: [
 " • Internal Technical Support Lead: Acting as the primary Tier 1 through Tier 3 support lead for 50+ users, managing everything from laptops to servers.",
