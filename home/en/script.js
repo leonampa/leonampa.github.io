@@ -3,7 +3,7 @@ const socialLinks = [
     {
         name: "GitHub",
         url: "https://github.com/leonampa",
-        icon: ",../github.png"
+        icon: "../github.png"
     },
     {
         name: "Email",
