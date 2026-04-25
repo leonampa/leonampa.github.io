@@ -14,7 +14,7 @@ const socialLinks = [
         name: "Support",
         url: "https://leonampa.github.io/support",
         icon: "home/help.png"
-    }
+    },
     {
         name: "Ελληνικά",
         url: "https://leonampa.github.io/home/gr",
