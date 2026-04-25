@@ -108,7 +108,7 @@ const achievements = [
     },
     {
         date: "March 2023",
-        titles: ["Placed 1st as Rebuttal Speaker, and 2nd as a Team, in the 5th QLS Debate (Level B1), among 66 teams and 200 contestants."]
+        titles: ["Placed 1st as Rebuttal Speaker, and 2nd as a Team, in the 5th QLS Debate (Level B1), among 66 teams and 200 contestants"]
     }
 ];
 
