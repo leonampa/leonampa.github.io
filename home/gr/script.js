@@ -3,22 +3,22 @@ const socialLinks = [
     {
         name: "GitHub",
         url: "https://github.com/leonampa",
-        icon: "github.png"
+        icon: "../github.png"
     },
     {
         name: "Email",
         url: "mailto:leonidampa@gmail.com",
-        icon: "email.png"
+        icon: "../email.png"
     },
      {
         name: "Υποστήριξη",
         url: "https://leonampa.github.io/support",
-        icon: "help.png"
+        icon: "../help.png"
     },
     {
         name: "English",
         url: "https://leonampa.github.io/home/en",
-        icon: "globe.png"
+        icon: "../globe.png"
     }
 ];
 
@@ -30,7 +30,7 @@ socialLinks.forEach(link => {
     a.target = '_blank';
 
     const img = document.createElement('img');
-    img.src = "home/" + link.icon;
+    img.src = link.icon;
     img.className = 'link-icon';
     img.alt = `${link.name} icon`;
 
@@ -45,7 +45,7 @@ socialLinks.forEach(link => {
 // --- ACHIEVEMENTS TIMELINE ---
 const achievements = [
     {
-        date: "September 2024 - Present (expected August 2027)",
+        date: "Σεπτέμβριος 2024 - Παρόν (αναμένεται August 2027)",
         titles: ["IT Operations & Infrastructure Lead | Lyceum"],
        descriptions: [
             " • Επικεφαλής Εσωτερικής Τεχνικής Υποστήριξης: Ενήργησα ως κύριος υπεύθυνος υποστήριξης Tier 1 έως Tier 3 για 50+ χρήστες, διαχειριζόμενος τα πάντα, από φορητούς υπολογιστές έως διακομιστές.",
@@ -56,19 +56,19 @@ const achievements = [
 ]
     },
     {
-        date: "April 2026 (in progress)",
+        date: "Απριλιος 2026 (σε εξέλιξη)",
         titles: ["CNA Cisco Networking Basics Certificate of Completion"]
     },
     {
-        date: "January 2026",
+        date: "Ιανουάριος 2026",
         titles: ["Gemini Certified Student K12"]
     },
     {
-        date: "September 2025",
+        date: "Σεπτέμβριος 2025",
         titles: ["Mimo Certificate of Completion: JavaScript"]
     },
     {
-        date: "August 2025",
+        date: "Αύγουστος 2025",
         titles: ["Digital Operations & Marketing Coordinator | Health & Beauty Sector"],
         descriptions: [
             " • Δημιουργία Περιεχομένου Multi-Channel Επικοινωνίας: Ανέπτυξα και εφάρμοσα μια συνεκτική στρατηγική κοινωνικών δικτύων σε Facebook, Instagram και TikTok. Χρησιμοποίησα το Canva για τον σχεδιασμό προωθητικού υλικού υψηλής αλληλεπίδρασης που αναδεικνύει τα αποτελέσματα των υπηρεσιών.",
@@ -78,11 +78,11 @@ const achievements = [
 ]
     },
     {
-        date: "May 2025",
+        date: "Μάϊος 2025",
         titles: ["Κρατικό Πιστοποιητικό Γλωσσομάθειας στα Γερμανικά (ΚΠγ, Επιπέδου A2)"]
     },
     {
-        date: "April 2025",
+        date: "Απρίλιος 2025",
         titles: [
             "Project: Semi-Automated Multi-Node Windows Deployment",
             "Mimo Certificate of Completion: HTML"
@@ -96,18 +96,18 @@ const achievements = [
         ]
     },
     {
-        date: "January 2025",
+        date: "Ιανουάριος 2025",
         titles: [
             "Advanced Level Certificate in English (ALCE, Επιπέδου C2, Mε Bαθμολογία 98%)", 
             "Mimo Certificate of Completion: Python"
         ]
     },
     {
-        date: "December 2024",
+        date: "Δεκέμβριος 2024",
         titles: ["Examination for the Certificate of Proficiency in English (ECPE, Επιπέδου C2)"]
     },
     {
-        date: "March 2023",
+        date: "Μάρτιος 2023",
         titles: ["Διακρίθηκα με την 1η θέση ως Rebuttal Speaker, και με την 2η θέση ως ομάδα, στο 5th QLS Debate (Επιπέδου B1), ανάμεσα σε 66 ομάδες και 200 συμμετέχοντες"]
     }
 ];
