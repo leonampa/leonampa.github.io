@@ -3,22 +3,22 @@ const socialLinks = [
     {
         name: "GitHub",
         url: "https://github.com/leonampa",
-        icon: "github.png"
+        icon: ",../github.png"
     },
     {
         name: "Email",
         url: "mailto:leonidampa@gmail.com",
-        icon: "email.png"
+        icon: "../email.png"
     },
     {
         name: "Support",
         url: "https://leonampa.github.io/support",
-        icon: "help.png"
+        icon: "../help.png"
     },
     {
         name: "Ελληνικά",
         url: "https://leonampa.github.io/home/gr",
-        icon: "globe.png"
+        icon: "../globe.png"
     }
 ];
 
@@ -30,7 +30,7 @@ socialLinks.forEach(link => {
     a.target = '_blank';
 
     const img = document.createElement('img');
-    img.src = "home/" + link.icon;
+    img.src = link.icon;
     img.className = 'link-icon';
     img.alt = `${link.name} icon`;
 
