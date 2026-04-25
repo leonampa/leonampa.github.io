@@ -2,28 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Leonidas Ampatzis</title>
-    <link rel="stylesheet" href="home/style.css">
-</head>
-<body>
-       <header class="fancy-header">
-        <div class="overlay"></div>
-        <div class="container header-content">
-            <h1>Leonidas Ampatzis</h1>
-            <p>IT Systems & Operations Lead | Student</p>
-            <div id="social-links" class="links">
-                </div> <br>
-        </div>
-    </header>
-    <main class="container">
-        <section class="timeline-section">
-            <h2>Timeline & Achievements</h2>
-            <div id="timeline" class="timeline">
-                </div>
-        </section>
-    </main>
+    <title>Redirecting...</title>
+    <script>
+        /** * EDIT THIS CONSTANT ONLY 
+         */
+        const targetURL = "https://leonampa.github.io/home/en";
 
-    <script src="home/script.js"></script>
+        // 1. Immediate JavaScript Redirect
+        window.location.replace(targetURL);
+
+        // 2. Fallback: Update the link in the body once the DOM loads
+        window.onload = () => {
+            const link = document.getElementById('manual-link');
+            if (link) {
+                link.href = targetURL;
+                link.textContent = targetURL;
+            }
+        };
+    </script>
+    
+    </head>
+<body style="font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; color: #64748b;">
+    <div style="text-align: center;">
+        <p>Redirecting you to <br> 
+           <a id="manual-link" style="color: #0f172a; font-weight: bold; text-decoration: none;">the destination</a>...
+        </p>
+    </div>
 </body>
 </html>

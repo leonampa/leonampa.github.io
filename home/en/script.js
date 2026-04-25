@@ -10,10 +10,15 @@ const socialLinks = [
         url: "mailto:leonidampa@gmail.com",
         icon: "email.png"
     },
-     {
+    {
         name: "Support",
         url: "https://leonampa.github.io/support",
         icon: "help.png"
+    }
+    {
+        name: "Ελληνικά",
+        url: "https://leonampa.github.io/home/gr",
+        icon: "globe.png"
     }
 ];
 
@@ -43,14 +48,17 @@ const achievements = [
         date: "September 2024 - Present (expected August 2027)",
         titles: ["IT Operations & Infrastructure Lead | Lyceum"],
         descriptions: [
-" • Internal Technical Support Lead: Acting as the primary Tier 1 through Tier 3 support lead for 50+ users, managing everything from laptops to servers.",
-" • Hardware Lifecycle Management: Orchestrated the provisioning and deployment of 37 high-performance endpoints for staff/student use, and managed the existing units on AD.",
-" • Network Infrastructure Overhaul: Audited and re-architected a building-wide network to improve uptime and throughput, and replicated it all on Cisco Packet Tracer, for pre-deployment testing and ongoing simulation of physical infrastructure.",
-" • Technical Documentation & Knowledge Base: Authored a comprehensive 30-page Standard Operating Procedure (SOP) covering all infrastructure and disaster recovery information (AD, File Servers, Networking, VoIP, and special systems as requested,  to eliminate 'single point of failure' risks).",
-" • Live Event Technical Production: Served as the sole AV Lead for all institutional events. Engineered full-scale audio deployments, including live mixing, EQ balancing, and signal path troubleshooting."
-]
+            " • Internal Technical Support Lead: Acting as the primary Tier 1 through Tier 3 support lead for 50+ users, managing everything from laptops to servers.",
+            " • Hardware Lifecycle Management: Orchestrated the provisioning and deployment of 37 high-performance endpoints for staff/student use, and managed the existing units on AD.",
+            " • Network Infrastructure Overhaul: Audited and re-architected a building-wide network to improve uptime and throughput, and replicated it all on Cisco Packet Tracer, for pre-deployment testing and ongoing simulation of physical infrastructure.",
+            " • Technical Documentation & Knowledge Base: Authored a comprehensive 30-page Standard Operating Procedure (SOP) covering all infrastructure and disaster recovery information (AD, File Servers, Networking, VoIP, and special systems as requested,  to eliminate 'single point of failure' risks).",
+            " • Live Event Technical Production: Served as the sole AV Lead for all institutional events. Engineered full-scale audio deployments, including live mixing, EQ balancing, and signal path troubleshooting."
+        ]
     },
-
+    {
+        date: "April 2026 (in progress)",
+        titles: ["CNA Cisco Networking Basics Certificate of Completion"]
+    },
     {
         date: "January 2026",
         titles: ["Gemini Certified Student K12"]
@@ -66,7 +74,8 @@ const achievements = [
             " • Multi-Channel Content Creation: Developed and deployed a cohesive social media strategy across Facebook, Instagram, and TikTok; utilized Canva to design high-engagement promotional assets showcasing service results.", 
             " • End-to-End E-commerce Management: Independently managed the brand’s e-shop, including inventory reconciliation, stock tracking, and order fulfillment logistics.",
             " • Customer Experience (CX): Acted as the primary point of contact for customer inquiries; resolved product questions and managed phone-based order processing to ensure high satisfaction rates.",
-            " • Workflow Continuity: Successfully maintained all digital business operations during a full-time staff transition, requiring rapid mastery of internal systems and brand voice."]
+            " • Workflow Continuity: Successfully maintained all digital business operations during a full-time staff transition, requiring rapid mastery of internal systems and brand voice."
+        ]
     },
     {
         date: "May 2025",
@@ -83,7 +92,8 @@ const achievements = [
             " • Infrastructure Optimization: Led a zero-budget initiative to repurpose 12 decommissioned desktop PCs, replacing failing hardware in the teachers' lounge and science lab to support a staff of 32 educators.", 
             " • Performance Strategy: Optimized legacy HDD performance by deploying a customized Windows Image, balancing modern application compatibility with significantly improved system responsiveness.", 
             " • Automated Deployment: Engineered a semi-automated provisioning workflow using Windows Server 2019, PXE/WDS, and custom Batch scripting to automate disk partitioning and image application.", 
-            " • Operational Impact: Completed the full-scale deployment within one week during academic breaks, establishing a sustainable hot-swap system for future hardware maintenance by non-technical staff."]
+            " • Operational Impact: Completed the full-scale deployment within one week during academic breaks, establishing a sustainable hot-swap system for future hardware maintenance by non-technical staff."
+        ]
     },
     {
         date: "January 2025",
@@ -98,7 +108,7 @@ const achievements = [
     },
     {
         date: "March 2023",
-        titles: ["Placed 1st as Rebuttal Speaker, and 2nd as a Team, in the 5th QLS Debate (Level B1)"]
+        titles: ["Placed 1st as Rebuttal Speaker, and 2nd as a Team, in the 5th QLS Debate (Level B1), among 66 teams and 200 contestants."]
     }
 ];
 
