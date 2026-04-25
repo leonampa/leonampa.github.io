@@ -3,22 +3,22 @@ const socialLinks = [
     {
         name: "GitHub",
         url: "https://github.com/leonampa",
-        icon: "home/github.png"
+        icon: "github.png"
     },
     {
         name: "Email",
         url: "mailto:leonidampa@gmail.com",
-        icon: "home/email.png"
+        icon: "email.png"
     },
      {
         name: "Υποστήριξη",
         url: "https://leonampa.github.io/support",
-        icon: "home/help.png"
+        icon: "help.png"
     },
     {
         name: "English",
         url: "https://leonampa.github.io/home/en",
-        icon: "home/globe.png"
+        icon: "globe.png"
     }
 ];
 
