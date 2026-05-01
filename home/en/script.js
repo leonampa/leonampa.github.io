@@ -64,6 +64,16 @@ const achievements = [
         titles: ["Gemini Certified Student K12"]
     },
     {
+        date: "October 2025",
+        titles: [
+            "Project: Vibe-Coded Habitica To-Do List Sorter"],
+        link: "https://github.com/leonampa/habitica-todo-sorter",
+        descriptions: [
+            " • Developed a 'Zero-Footprint' utility that streamlines Habitica’s gamified task management by programmatically consolidating fragmented To-Dos into a single, prioritized daily master-task using a custom heuristic sorting algorithm.", 
+            " • Engineered a serverless front-end using Vanilla JavaScript and Tailwind CSS that utilizes browser localStorage for API credential persistence, ensuring sensitive user data is never transmitted to or stored on external servers.", 
+        ]
+    },
+    {
         date: "September 2025",
         titles: ["Mimo Certificate of Completion: JavaScript"]
     },

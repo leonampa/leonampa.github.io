@@ -64,6 +64,16 @@ const achievements = [
         titles: ["Gemini Certified Student K12"]
     },
     {
+        date: "Οκτώβριος 2025",
+        titles: [
+            "Project: Vibe-Coded Εργαλείο Οργάνωσης Λίστας To-Do για το Habitica"],
+        link: "https://github.com/leonampa/habitica-todo-sorter",
+        descriptions: [
+            " • Ανέπτυξα μια εφαρμογή 'Zero-Footprint' που βελτιστοποιεί τη διαχείριση εργασιών στο Habitica, ομαδοποιώντας προγραμματιστικά τα διάσπαρτα To-Dos σε μια ενιαία, ιεραρχημένη καθημερινή εργασία μέσω ενός ειδικού αλγορίθμου ταξινόμησης.", 
+            " • Σχεδίασα ένα serverless front-end περιβάλλον χρησιμοποιώντας Vanilla JavaScript και Tailwind CSS, το οποίο αξιοποιεί το localStorage του προγράμματος περιήγησης για τη διατήρηση των διαπιστευτηρίων API, διασφαλίζοντας ότι τα ευαίσθητα δεδομένα του χρήστη δεν αποθηκεύονται ποτέ σε εξωτερικούς διακομιστές.", 
+        ]
+    },
+    {
         date: "Σεπτέμβριος 2025",
         titles: ["Mimo Certificate of Completion: JavaScript"]
     },
