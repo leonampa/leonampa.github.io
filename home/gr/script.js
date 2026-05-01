@@ -168,7 +168,7 @@ achievements.forEach(item => {
                 const linkA = document.createElement('a');
                 linkA.href = item.link;
                 linkA.target = '_blank';
-                linkA.textContent = 'View Repository →';
+                linkA.textContent = 'Προβολή αποθετηρίου →';
                 contentDiv.appendChild(linkA);
             }
         }
