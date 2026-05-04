@@ -52,7 +52,8 @@ const achievements = [
             " • Hardware Lifecycle Management: Orchestrated the provisioning and deployment of 37 high-performance endpoints for staff/student use, and managed the existing units on Endpoint Management and RMM software (Action1).",
             " • Network Infrastructure Overhaul: Audited and re-architected a building-wide network to improve uptime and throughput, and replicated it all on Cisco Packet Tracer, for pre-deployment testing and ongoing simulation of physical infrastructure.",
             " • Technical Documentation & Knowledge Base: Authored a comprehensive 30-page Standard Operating Procedure (SOP) covering all infrastructure and disaster recovery information (Endpoints, File Servers, Networking, VoIP, and special systems as requested,  to eliminate 'single point of failure' risks).",
-            " • Live Event Technical Production: Served as the sole AV Lead for all institutional events. Engineered full-scale audio deployments, including live mixing, EQ balancing, and signal path troubleshooting."
+            " • Live Event Technical Production: Served as the sole AV Lead for all institutional events. Engineered full-scale audio deployments, including live mixing, EQ balancing, and signal path troubleshooting.",
+            " • Service Management & Triage: Developed and maintained a centralized support intake framework to manage requests for 50+ users, utilizing conditional logic to enforce technical troubleshooting steps (e.g., system restarts and error-code reporting) prior to ticket submission."
         ]
     },
     {
