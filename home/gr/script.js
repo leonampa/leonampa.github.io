@@ -45,7 +45,7 @@ socialLinks.forEach(link => {
 // --- ACHIEVEMENTS TIMELINE ---
 const achievements = [
     {
-        date: "Σεπτέμβριος 2024 - Παρόν (αναμένεται August 2027)",
+        date: "Σεπτέμβριος 2024 - Παρόν (αναμένεται Αύγουστος 2027)",
         titles: ["IT Operations & Infrastructure Lead | Lyceum"],
        descriptions: [
             " • Επικεφαλής Εσωτερικής Τεχνικής Υποστήριξης: Ενήργησα ως κύριος υπεύθυνος υποστήριξης Tier 1 έως Tier 3 για 50+ χρήστες, διαχειριζόμενος τα πάντα, από φορητούς υπολογιστές έως διακομιστές.",
