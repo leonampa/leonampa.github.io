@@ -57,8 +57,8 @@ const achievements = [
 ]
     },
     {
-        date: "Απριλιος 2026 (σε εξέλιξη)",
-        titles: ["CNA Cisco Networking Basics Certificate of Completion"]
+        date: "Μάϊος 2026",
+        titles: ["Cisco Networking Academy Networking Basics Certificate of Completion"]
     },
     {
         date: "Ιανουάριος 2026",

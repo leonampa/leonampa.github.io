@@ -57,8 +57,8 @@ const achievements = [
         ]
     },
     {
-        date: "April 2026 (in progress)",
-        titles: ["CNA Cisco Networking Basics Certificate of Completion"]
+        date: "May 2026",
+        titles: ["Cisco Networking Academy Networking Basics Certificate of Completion"]
     },
     {
         date: "January 2026",
