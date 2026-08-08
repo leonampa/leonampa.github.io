@@ -1,32 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="el">
 <head>
-    <meta charset="UTF-8">
-    <title>Redirecting...</title>
-    <script>
-        /** * EDIT THIS CONSTANT ONLY 
-         */
-        const targetURL = "https://leonampa.webnode.gr/sr/";
+    <meta charset="utf-8">
+    <title>ΑΡΧΙΚΗ ΜΑΘΗΤΩΝ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .btn-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        a.btn {
+            display: block;
+            padding: 10px;
+            background-color: #f0f0f0;
+            color: #000;
+            text-decoration: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        a.btn:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ΧΡΗΣΙΜΟΙ ΣΥΝΔΕΣΜΟΙ</h1>
+        <div class="btn-grid">
+            <a class="btn" href="https://2lyk-n-filad.att.sch.gr/" target="_blank">Ιστοσελίδα Σχολείου*</a>
+            <a class="btn" href="https://drive.google.com/drive/folders/12YCdtFtMZLGyqVoncp6gC9DKquajSWJq?usp=sharing" target="_blank">Google Drive*</a>
+            <a class="btn" href="https://ebooks.edu.gr/ebooks/v2/class-main.jsp?classcode=K12" target="_blank">Σχολικά Βιβλία (.pdf)*</a>
+        </div>
 
-        // 1. Immediate JavaScript Redirect
-        window.location.replace(targetURL);
+        <hr>
 
-        // 2. Fallback: Update the link in the body once the DOM loads
-        window.onload = () => {
-            const link = document.getElementById('manual-link');
-            if (link) {
-                link.href = targetURL;
-                link.textContent = targetURL;
-            }
-        };
-    </script>
-    
-    </head>
-<body style="font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; color: #64748b;">
-    <div style="text-align: center;">
-        <p>Redirecting you to <br> 
-           <a id="manual-link" style="color: #0f172a; font-weight: bold; text-decoration: none;">the destination</a>...
-        </p>
+        <h1>ΟΔΗΓΟΙ ΗΜΕΡΟΛΟΓΙΩΝ</h1>
+        <div class="btn-grid">
+            <a class="btn" href="gcal-android/index.html">ΓΙΑ ANDROID</a>
+            <a class="btn" href="gcal-ios/index.html">ΓΙΑ iOS</a>
+            <a class="btn" href="gcal-pc/index.html">ΓΙΑ WINDOWS</a>
+        </div>
     </div>
 </body>
 </html>
