@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Homework</title>
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body {
+    margin: 0; padding: 0;
+    width: 100%; height: 100%;
+    background: #000;
+    overflow: hidden;
+  }
+  #stage {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+  }
+  #img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: none;
+  }
+  #timestamp {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.55);
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    text-align: center;
+  }
+  #msg {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.95rem;
+    text-align: center;
+    padding: 24px;
+    display: none;
+  }
+</style>
+</head>
+<body>
+<div id="stage">
+  <img id="img" alt="Homework">
+  <div id="msg"></div>
+</div>
+<div id="timestamp"></div>
+
+<script>
+  const RAW_BASE = "https://raw.githubusercontent.com/leonampa/leonampa.github.io/hw";
+  const img = document.getElementById('img');
+  const msg = document.getElementById('msg');
+  const timestampEl = document.getElementById('timestamp');
+
+  function showMsg(text) {
+    msg.textContent = text;
+    msg.style.display = 'block';
+    img.style.display = 'none';
+  }
+
+  function formatTimestamp(iso) {
+    try {
+      const d = new Date(iso);
+      return d.toLocaleString(undefined, {
+        weekday: 'short', month: 'short', day: 'numeric',
+        hour: '2-digit', minute: '2-digit'
+      });
+    } catch {
+      return iso;
+    }
+  }
+
+  async function load() {
+    const t = Date.now();
+    try {
+      const metaRes = await fetch(`${RAW_BASE}/data/meta.json?t=${t}`, { cache: 'no-store' });
+      if (metaRes.ok) {
+        const meta = await metaRes.json();
+        if (meta.updated) {
+          timestampEl.textContent = 'Last updated: ' + formatTimestamp(meta.updated);
+        }
+      }
+    } catch (e) {
+      // non-fatal, timestamp just won't show
+    }
+
+    img.onload = () => {
+      img.style.display = 'block';
+      msg.style.display = 'none';
+    };
+    img.onerror = () => {
+      showMsg('No homework image available yet.');
+    };
+    img.src = `${RAW_BASE}/data/latest.png?t=${t}`;
+  }
+
+  load();
+</script>
+</body>
+</html>
