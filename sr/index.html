@@ -1,57 +1,37 @@
 <!DOCTYPE html>
 <html lang="el">
 <head>
-    <meta charset="utf-8">
-    <title>ΑΡΧΙΚΗ ΜΑΘΗΤΩΝ</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            text-align: center;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .btn-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        a.btn {
-            display: block;
-            padding: 10px;
-            background-color: #f0f0f0;
-            color: #000;
-            text-decoration: none;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        a.btn:hover {
-            background-color: #e0e0e0;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Αρχική Μαθητών</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>ΧΡΗΣΙΜΟΙ ΣΥΝΔΕΣΜΟΙ</h1>
-        <div class="btn-grid">
-            <a class="btn" href="https://2lyk-n-filad.att.sch.gr/" target="_blank">Ιστοσελίδα Σχολείου</a>
-            <a class="btn" href="https://drive.google.com/drive/folders/12YCdtFtMZLGyqVoncp6gC9DKquajSWJq?usp=sharing" target="_blank">Google Drive</a>
-            <a class="btn" href="https://ebooks.edu.gr/ebooks/v2/class-main.jsp?classcode=K12" target="_blank">Σχολικά Βιβλία (.pdf)</a>
-            <a class="btn" href="https://leonampa.github.io/sr/hw" target="_blank">Μαθήματα για το Σπίτι</a>
-        </div>
+  <div class="page">
+    <h1>Αρχική Μαθητών</h1>
+    <p class="lede">Χρήσιμοι σύνδεσμοι για το σχολείο, και οδηγοί για να προσθέσετε το πρόγραμμα μαθημάτων στο κινητό ή τον υπολογιστή σας.</p>
 
-        <hr>
+    <hr class="rule">
 
-        <h1>ΟΔΗΓΟΙ ΗΜΕΡΟΛΟΓΙΩΝ</h1>
-        <div class="btn-grid">
-            <a class="btn" href="gcal-android/index.html">ΓΙΑ ANDROID</a>
-            <a class="btn" href="gcal-ios/index.html">ΓΙΑ iOS</a>
-            <a class="btn" href="gcal-pc/index.html">ΓΙΑ WINDOWS</a>
-            <a class="btn" href="gcal/index.html">ΠΡΟΒΟΛΗ ONLINE</a>
-        </div>
-    </div>
+    <h2>Χρήσιμοι Σύνδεσμοι</h2>
+    <nav class="btn-grid">
+      <a class="btn" href="https://2lyk-n-filad.att.sch.gr/" target="_blank" rel="noopener">Ιστοσελίδα Σχολείου <span class="chev">›</span></a>
+      <a class="btn" href="https://drive.google.com/drive/folders/12YCdtFtMZLGyqVoncp6gC9DKquajSWJq?usp=sharing" target="_blank" rel="noopener">Google Drive <span class="chev">›</span></a>
+      <a class="btn" href="https://ebooks.edu.gr/ebooks/v2/class-main.jsp?classcode=K12" target="_blank" rel="noopener">Σχολικά Βιβλία<span class="chev">›</span></a>
+      <a class="btn" href="https://leonampa.github.io/sr/hw" target="_blank" rel="noopener">Μαθήματα για το σπίτι <span class="chev">›</span></a>
+    </nav>
+
+    <hr class="rule">
+
+    <h2>Οδηγοί Ημερολογίων</h2>
+    <nav class="btn-grid">
+      <a class="btn" href="gcal-android/index.html">Android <span class="chev">›</span></a>
+      <a class="btn" href="gcal-ios/index.html">iPhone / iPad <span class="chev">›</span></a>
+      <a class="btn" href="gcal-pc/index.html">Υπολογιστής <span class="chev">›</span></a>
+      <a class="btn" href="gcal/index.html">Προβολή Online <span class="chev">›</span></a>
+    </nav>
+  </div>
+
+  <script src="site.js" defer></script>
 </body>
 </html>
