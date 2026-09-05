@@ -1,151 +1,76 @@
 <!DOCTYPE html>
 <html lang="el">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ΟΔ. ANDROID</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h1, h2 {
-            text-align: center;
-        }
-        .step {
-            margin-bottom: 30px;
-        }
-        .image-placeholder {
-            display: block;
-            background-color: #f0f0f0;
-            border: 2px dashed #ccc;
-            padding: 20px;
-            text-align: center;
-            margin: 15px 0;
-            font-weight: bold;
-            color: #555;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 15px auto;
-        }
-        hr {
-            border: 0;
-            height: 1px;
-            background: #ccc;
-            margin: 20px 0;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Οδηγός Android</title>
+  <link rel="stylesheet" href="../style.css">
 </head>
 <body>
+  <div class="page">
+    <a class="crumb" href="../index.html">‹ Αρχική</a>
+    <h1>Οδηγός Android</h1>
+    <p class="lede">Προσθέστε το πρόγραμμα μαθημάτων στο Ημερολόγιο μιας συσκευής Android (Samsung, Xiaomi κ.ά.), σε 7 βήματα.</p>
 
-    <main>
-        <h1><strong>ΟΔ. ANDROID</strong></h1>
+    <ol class="steps">
+      <li>
+        <p>Εγκαταστήστε από το Play Store τις εφαρμογές <a href="https://play.google.com/store/apps/details?id=com.google.android.calendar" target="_blank" rel="noopener">Google Calendar</a> και <a href="https://play.google.com/store/apps/details?id=com.android.chrome" target="_blank" rel="noopener">Google Chrome</a>, αν δεν τις έχετε ήδη.</p>
+        <figure class="shot">
+          <img src="homescreeneed.webp" alt="Εφαρμογές στην αρχική οθόνη" loading="lazy">
+        </figure>
+        <p class="zoom-hint">Πατήστε πάνω σε μια εικόνα για μεγέθυνση.</p>
+      </li>
+      <li>
+        <p>Πατήστε πάνω, ή αντιγράψτε στο Chrome, τον σύνδεσμο του τμήματός σας:</p>
+        <div class="cal-list" data-cal-list></div>
+        <p class="note">Ενδέχεται, χάρη σε ενημερώσεις της Google, να ανοίξει κατευθείαν η εφαρμογή Google Calendar με δυνατότητα άμεσης προσθήκης. Αν συμβεί αυτό, πατήστε «Προσθήκη» και αγνοήστε τα υπόλοιπα βήματα.</p>
+        <figure class="shot">
+          <img src="address.webp" alt="Άνοιγμα συνδέσμου" loading="lazy">
+        </figure>
+      </li>
+      <li>
+        <p>Αν η οθόνη σας μοιάζει με την πρώτη εικόνα, πατήστε τις τρεις τελείες πάνω-δεξιά και επιλέξτε «Εμφάνιση υπολογιστή» / «Desktop site». Αν μοιάζει ήδη με την εικόνα του επόμενου βήματος, παραλείψτε αυτό το βήμα.</p>
+        <figure class="shot">
+          <img src="calendarwebmobile.webp" alt="Προβολή κινητού" loading="lazy">
+        </figure>
+        <figure class="shot">
+          <img src="calendarwebdesktopmenu.webp" alt="Επιλογή προβολής υπολογιστή" loading="lazy">
+        </figure>
+      </li>
+      <li>
+        <p>Εφόσον η οθόνη σας μοιάζει με την εικόνα, κάντε μεγέθυνση με τα δύο δάχτυλα ώστε να φαίνεται καθαρά, και πατήστε <strong>«Προσθήκη» / «Add»</strong>.</p>
+        <figure class="shot">
+          <img src="calendarwebdesktopprompt.webp" alt="Προτροπή προσθήκης ημερολογίου" loading="lazy">
+        </figure>
+      </li>
+      <li>
+        <p>Το ημερολόγιο θα γεμίσει, και στην αριστερή στήλη θα εμφανιστεί ένα κόκκινο τσεκ με την ένδειξη «Διδακτικές Ώρες». Αυτό σημαίνει ότι όλα πήγαν καλά μέχρι στιγμής.</p>
+        <figure class="shot">
+          <img src="calendarwebdesktopready.webp" alt="Το ημερολόγιο προστέθηκε" loading="lazy">
+        </figure>
+      </li>
+      <li>
+        <p>Κλείστε το Chrome και ανοίξτε το Calendar. Πάνω-αριστερά πατήστε τις τρεις γραμμές, κυλίστε κάτω και πατήστε <strong>«Ρυθμίσεις» / «Settings»</strong>.</p>
+        <figure class="shot">
+          <img src="mobilemenuside.webp" alt="Μενού ρυθμίσεων" loading="lazy">
+        </figure>
+      </li>
+      <li>
+        <p>Πατήστε το ημερολόγιο του τμήματός σας (ίσως χρειαστεί «Δείτε περισσότερα» / «See more» για να εμφανιστεί), και ενεργοποιήστε τον διακόπτη «Συγχρονισμός» / «Sync». Εδώ μπορείτε επίσης να αλλάξετε χρώμα και όνομα εμφάνισης.</p>
+        <figure class="shot">
+          <img src="calsettings.webp" alt="Ρυθμίσεις ημερολογίου" loading="lazy">
+        </figure>
+        <p>Επιστρέφοντας στο ημερολόγιο, θα πρέπει να φαίνεται κάπως έτσι:</p>
+        <figure class="shot">
+          <img src="mobileready.webp" alt="Τελικό αποτέλεσμα" loading="lazy">
+        </figure>
+      </li>
+    </ol>
 
-        <p>Αυτός ο οδηγός δείχνει πώς να βάλετε το σχολικό πρόγραμμα του Γ1 στο Ημερολόγιο μίας συσκευής Android (Samsung, Xiaomi κ.λπ.) σε 7 βήματα.</p>
+    <p class="foot">Συγχαρητήρια — προσθέσατε το πρόγραμμα στο Google Calendar! Αν δεν φαίνεται έτσι, κάτι πήγε λάθος· επικοινωνήστε μαζί μου. (Οι φωτογραφίες χρησιμοποιούνται ενδεικτικά.)</p>
+  </div>
 
-        <hr>
-
-        <div class="step">
-            <p><strong>Βήμα 1:</strong><br>
-            Εγκαταστήστε απο το Play Store τις εφαρμογές <a href="https://play.google.com/store/apps/details?id=com.google.android.calendar" target="_blank">Google Calendar</a> και <a href="https://play.google.com/store/apps/details?id=com.android.chrome" target="_blank">Google Chrome</a>, αν δεν τις εχετε ήδη.</p>
-            
-            <!-- Replace !!!PICTURE!!! with your image URL -->
-            <img src="homescreeneed.webp" alt="Βήμα 1">
-        </div>
-
-        <hr>
-
-        <div class="step">
-            <p><strong>Βήμα 2:</strong></p>
-            <p>Πατήστε πάνω, ή αντιγράψτε στο Chrome, τους συνδέσμους των τμημάτων σας:</p>
-            <blockquote>
-            <p><strong>Γενικής: </strong><a href="https://calendar.google.com/calendar/u/0?cid=MWNjODMxZDliZDZhZGU1OTE0NDk0YjYwMDU0OWE0ZThhOTA5YTEyYmRmNTU1NzM4MDBlNTEzNzZkY2M5YjQzZkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank">https://calendar.google.com/calendar/u/0?cid=NTI2NmQzODFhMTk4MjQ4MzQzMThjOTVjODc1N2ExNTNhMWRkODVjMDA4MWQ4MzVlZWE4YWMxMTBhZTZkNmYzN0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t</a></p>
-            <p><strong>Ανθρωπιστικής Κατεύθυνσης: </strong><a href="https://calendar.google.com/calendar/u/0?cid=ODcyMTQ0M2ZlZTc3ZTE1YjBjOGQ1YjBlNjI5NzdjYjA2YzYyOGU3OTRhYmMwOTA5NzEyMWFmYjRhNGQ1MDRkMkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank">https://calendar.google.com/calendar/u/0?cid=ODcyMTQ0M2ZlZTc3ZTE1YjBjOGQ1YjBlNjI5NzdjYjA2YzYyOGU3OTRhYmMwOTA5NzEyMWFmYjRhNGQ1MDRkMkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t</a></p>
-            <p><strong>Θετικής Κατεύθυνσης: </strong><a href="https://calendar.google.com/calendar/u/0?cid=MTdkNzk5NzA0MzI1ZmE5ZTAzMjI1ZGRhNDYyNzE2YjM4NzFjNGQxNDBiODVhYjFkNWI1YjVlODk4ZGNjYjg4OUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank">https://calendar.google.com/calendar/u/0?cid=MTdkNzk5NzA0MzI1ZmE5ZTAzMjI1ZGRhNDYyNzE2YjM4NzFjNGQxNDBiODVhYjFkNWI1YjVlODk4ZGNjYjg4OUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t</a></p>
-            <p><strong>Κατεύθυνσης Υγείας: </strong><a href="https://calendar.google.com/calendar/u/0?cid=OTAxMzFiNjQ2YjFmY2M5NTJhZGVhY2NlM2VlNDEyZWZiOWM1OGRmZTIxYmZhNzdjY2YzMmUzYTQ0OGY4MzQ2MUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank">https://calendar.google.com/calendar/u/0?cid=OTAxMzFiNjQ2YjFmY2M5NTJhZGVhY2NlM2VlNDEyZWZiOWM1OGRmZTIxYmZhNzdjY2YzMmUzYTQ0OGY4MzQ2MUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t</a></p>
-            <p><strong>Κατεύθυνσης Οικονομικών: </strong><a href="https://calendar.google.com/calendar/u/0?cid=NjZiZDViNDA1NzFlY2Q2OTk2MGYzOTA1MWY4MDYyOTA3Njg0ZmNkMzhkZmYxYTkyNjkwOGM3OTRjZDg0OTg4OUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank">https://calendar.google.com/calendar/u/0?cid=NjZiZDViNDA1NzFlY2Q2OTk2MGYzOTA1MWY4MDYyOTA3Njg0ZmNkMzhkZmYxYTkyNjkwOGM3OTRjZDg0OTg4OUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t</a></p>
-           </blockquote>
-           
-            <h3><strong>Υπάρχει περίπτωση, χάρη σε ενημερώσεις της Google, να ανοίξει η εφαρμογή Google Calendar, με την δυνατότητα να προσθέσετε κατ' ευθείαν το ημερολόγιο. Σε αυτή την περίπτωση, πατήστε Προσθήκη, και αγνοήστε τα υπόλοιπα βήματα.</strong></h2>
-            <!-- Replace !!!PICTURE!!! with your image URL -->
-            <img src="address.webp" alt="Βήμα 2">
-        </div>
-
-        <hr>
-
-        <div class="step">
-            <p><strong>Βήμα 3:</strong></p>
-            <p>Αν η οθόνη σας φαίνεται όπως στην εικόνα 1, πατήστε τις τρείς τελείες πάνω δεξιά και μετα πατηστε "Εμφανιση υπολογιστή" ή "Desktop site" (εικόνα 2).</p>
-            <p>Άν φαίνεται όπως στην εικόνα 1 του Βήματος 4, παραλείψτε αυτο το βήμα.</p>
-            
-            <!-- Replace !!!PICTURE!!! with your image URL -->
-            <img src="calendarwebmobile.webp" alt="Βήμα 3 - Εικόνα 1">
-            <!-- Replace !!!PICTURE!!! with your image URL -->
-            <img src="calendarwebdesktopmenu.webp" alt="Βήμα 3 - Εικόνα 2">
-        </div>
-
-        <hr>
-
-        <div class="step">
-            <p><strong>Βήμα 4:</strong></p>
-            <p>Εφόσον η οθόνη σας φαίνεται οπως την εικόνα 1, όλα έχουν πάει σωστά.</p>
-            <p>Κάντε μεγένθυνση, ξετσιμπώντας τα δυο δακτυλά σας απο το κουτί, ωστε να φαίνεται σωστά. Eπιλέξετε το κουμπί "Προσθήκη" ή "Add".</p>
-            
-            <!-- Replace !!!PICTURE!!! with your image URL -->
-            <img src="calendarwebdesktopprompt.webp" alt="Βήμα 4">
-        </div>
-
-        <hr>
-
-        <div class="step">
-            <p><strong>Βήμα 5:</strong></p>
-            <p>Αφού πατήσετε το κουμπί, θα πρέπει να δείτε το ημερολόγιο να γεμίσει, και στην αριστερή στήλη να προστείθεται ενα κόκκινο τσεκ που απο δίπλα γράφει "Διδακτικές Ωρες Γ1". (εικόνα 1) Αυτό σημαίνει πως έχετε κανει τα πάντα σωστά μεχρι στιγμής.</p>
-            
-            <!-- Replace !!!PICTURE!!! with your image URL -->
-            <img src="calendarwebdesktopready.webp" alt="Βήμα 5">
-        </div>
-
-        <hr>
-
-        <div class="step">
-            <p><strong>Βήμα 6:</strong></p>
-            <p>Κλείστε το Chrome, και ανοίξτε το Calendar. Πάνω αριστερά θα δείτε τρείς γραμμές, πατήστε τις.<br>
-            Κυλίστε κάτω και πατήστε "Ρυθμίσεις" ή "Settings" (εικόνα 1)</p>
-            
-            <!-- Replace !!!PICTURE!!! with your image URL -->
-            <img src="mobilemenuside.webp" alt="Βήμα 6">
-        </div>
-
-        <hr>
-
-        <div class="step">
-            <p><strong>Βήμα 7:</strong></p>
-            <p>Πατήστε το "Διδακτικές Ώρες Γ1", (μπορει να χρειαστεί να πατήσετε το "Δείτε Περισσότερα" ή "See More" για να εμφανιστεί), και ενεργοποιήστε το μοχλό που συνοδεύεται απο την λέξη "Συνχρονισμός" ή "Sync". Σε αυτό το σημείο, μπορείτε να αλλάξετε το χρώμα και όνομα εμφάνισης του ημερολογίου.</p>
-            
-            <!-- Replace !!!PICTURE!!! with your image URL -->
-            <img src="calsettings.webp" alt="Βήμα 7">
-            
-            <p>Πηγαίντε πισω στο ημερολόγιο, και θα πρέπει να φαίνεται καπως έτσι: (απο 11 Σεπτ, καθημερινες)</p>
-            
-            <!-- Replace !!!PICTURE!!! with your image URL -->
-            <img src="mobileready.webp" alt="Τελικό Αποτέλεσμα">
-        </div>
-
-        <hr>
-
-        <div class="step">
-            <p><strong>Συγχαρητήρια!</strong> Προσθέσατε το ημερολόγιο πρόγραμμα του Γ1 στο Google Calendar!</p>
-            <p>Αν δέν φαίνεται έτσι, κάτι πήγε λάθος. Παρακαλώ επικοινωνηστε μαζί μου.</p>
-            <p>(Οι φωτογραφίες χρησιμοποιούνται ενδεικτικά.)</p>
-        </div>
-    </main>
-
+  <script src="../calendars.js" defer></script>
+  <script src="../site.js" defer></script>
 </body>
 </html>
