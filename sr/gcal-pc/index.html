@@ -1,55 +1,39 @@
 <!DOCTYPE html>
-<lang="el">
+<html lang="el">
 <head>
-    <meta charset="utf-8">
-    <title>ΟΔ. ΥΠΟΛOΓΙΣΤΗ :: leonampa</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            line-height: 1.6;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .center {
-            text-align: center;
-        }
-        .img-placeholder {
-            display: block;
-            margin: 20px auto;
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Οδηγός Υπολογιστή</title>
+  <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <div class="container">
-        <h1 class="center"><strong>ΟΔ. ΥΠΟΛΟΓΙΣΤΗ</strong></h1>
+  <div class="page">
+    <a class="crumb" href="../index.html">‹ Αρχική</a>
+    <h1>Οδηγός Υπολογιστή</h1>
+    <p class="lede">Προσθέστε το πρόγραμμα μαθημάτων στο Google Calendar του λογαριασμού σας, σε 2 βήματα. Αυτά τα βήματα καλύπτουν παράλληλα και μέχρι το βήμα 4 του <a href="../gcal-android/index.html">οδηγού για Android</a>.</p>
 
-        <p>Χρησιμοποιήστε το σχολικό πρόγραμμα στον υπολογιστή και στο λογαριασμό Google σας σε δυο βήματα.</p>
-        <p>Με αυτό τον οδηγό <strong>παράλληλα ολοκληρώνετε</strong> μέχρι και το <strong>βήμα 4</strong> του <a href="/gcal-android/">οδηγού για συσκευές <strong>Android</strong>.</a></p>
+    <ol class="steps">
+      <li>
+        <p>Πατήστε πάνω σε κάθε σύνδεσμο του τμήματός σας παρακάτω, ή αντιγράψτε τον με το κουμπί δίπλα και επικολλήστε τον στη μπάρα διευθύνσεων του browser.</p>
+        <div class="cal-list" data-cal-list></div>
+      </li>
+      <li>
+        <p>Στο παράθυρο που ανοίγει, πατήστε <strong>Προσθήκη</strong>.</p>
+        <figure class="shot">
+          <img src="pc1.webp" alt="Κουμπί προσθήκης ημερολογίου" loading="lazy">
+        </figure>
+        <p class="zoom-hint">Πατήστε πάνω σε μια εικόνα για μεγέθυνση.</p>
+        <p>Συγχαρητήρια — θα πρέπει να φαίνεται κάπως έτσι:</p>
+        <figure class="shot">
+          <img src="pc2.webp" alt="Το πρόγραμμα προστέθηκε στο ημερολόγιο" loading="lazy">
+        </figure>
+      </li>
+    </ol>
 
-        <hr>
+    <p class="foot">Αν κάτι δεν φαίνεται σωστά, επικοινωνήστε μαζί μου.</p>
+  </div>
 
-        <p><strong>Βημα 1:</strong></p>
-        <p>Πατήστε πάνω, ή αντιγράψτε στη μπαρα URL, τους συνδέσμους των τμημάτων σας:</p>
-            <blockquote>
-            <p><strong>Γενικής: </strong><a href="https://calendar.google.com/calendar/u/0?cid=MWNjODMxZDliZDZhZGU1OTE0NDk0YjYwMDU0OWE0ZThhOTA5YTEyYmRmNTU1NzM4MDBlNTEzNzZkY2M5YjQzZkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank">https://calendar.google.com/calendar/u/0?cid=NTI2NmQzODFhMTk4MjQ4MzQzMThjOTVjODc1N2ExNTNhMWRkODVjMDA4MWQ4MzVlZWE4YWMxMTBhZTZkNmYzN0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t</a></p>
-            <p><strong>Ανθρωπιστικής Κατεύθυνσης: </strong><a href="https://calendar.google.com/calendar/u/0?cid=ODcyMTQ0M2ZlZTc3ZTE1YjBjOGQ1YjBlNjI5NzdjYjA2YzYyOGU3OTRhYmMwOTA5NzEyMWFmYjRhNGQ1MDRkMkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank">https://calendar.google.com/calendar/u/0?cid=ODcyMTQ0M2ZlZTc3ZTE1YjBjOGQ1YjBlNjI5NzdjYjA2YzYyOGU3OTRhYmMwOTA5NzEyMWFmYjRhNGQ1MDRkMkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t</a></p>
-            <p><strong>Θετικής Κατεύθυνσης: </strong><a href="https://calendar.google.com/calendar/u/0?cid=MTdkNzk5NzA0MzI1ZmE5ZTAzMjI1ZGRhNDYyNzE2YjM4NzFjNGQxNDBiODVhYjFkNWI1YjVlODk4ZGNjYjg4OUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank">https://calendar.google.com/calendar/u/0?cid=MTdkNzk5NzA0MzI1ZmE5ZTAzMjI1ZGRhNDYyNzE2YjM4NzFjNGQxNDBiODVhYjFkNWI1YjVlODk4ZGNjYjg4OUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t</a></p>
-            <p><strong>Κατεύθυνσης Υγείας: </strong><a href="https://calendar.google.com/calendar/u/0?cid=OTAxMzFiNjQ2YjFmY2M5NTJhZGVhY2NlM2VlNDEyZWZiOWM1OGRmZTIxYmZhNzdjY2YzMmUzYTQ0OGY4MzQ2MUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank">https://calendar.google.com/calendar/u/0?cid=OTAxMzFiNjQ2YjFmY2M5NTJhZGVhY2NlM2VlNDEyZWZiOWM1OGRmZTIxYmZhNzdjY2YzMmUzYTQ0OGY4MzQ2MUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t</a></p>
-            <p><strong>Κατεύθυνσης Οικονομικών: </strong><a href="https://calendar.google.com/calendar/u/0?cid=NjZiZDViNDA1NzFlY2Q2OTk2MGYzOTA1MWY4MDYyOTA3Njg0ZmNkMzhkZmYxYTkyNjkwOGM3OTRjZDg0OTg4OUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank">https://calendar.google.com/calendar/u/0?cid=NjZiZDViNDA1NzFlY2Q2OTk2MGYzOTA1MWY4MDYyOTA3Njg0ZmNkMzhkZmYxYTkyNjkwOGM3OTRjZDg0OTg4OUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t</a></p>
-           </blockquote>
-        <p><strong>Βήμα 2:</strong></p>
-        <p>Επιλεξτε Προσθήκη/Add (εικόνα 1)</p>
-
-        <img src="pc1.webp" alt="Εικόνα 1" class="img-placeholder">
-
-        <p>Συγχαρητήρια! Θα πρέπει να φαίνεται κάπως έτσι:&nbsp;</p>
-
-        <img src="pc2.webp" alt="Εικόνα 2" class="img-placeholder">
-    </div>
+  <script src="../calendars.js" defer></script>
+  <script src="../site.js" defer></script>
 </body>
 </html>
