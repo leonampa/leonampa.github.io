@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /sr/
+Disallow: /support/
+Allow: /
+
+Sitemap: https://leonampa.github.io/sitemap.xml
