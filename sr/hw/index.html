@@ -19,6 +19,7 @@
     align-items: center;
     justify-content: center;
     background: #000;
+    touch-action: none;
   }
   #img {
     max-width: 100%;
@@ -27,6 +28,9 @@
     height: auto;
     object-fit: contain;
     display: none;
+    touch-action: none;
+    transform-origin: 0 0;
+    will-change: transform;
   }
   #timestamp {
     position: fixed;
@@ -96,6 +100,7 @@
     img.onload = () => {
       img.style.display = 'block';
       msg.style.display = 'none';
+      resetZoom();
     };
     img.onerror = () => {
       showMsg('No homework image available yet.');
@@ -104,6 +109,96 @@
   }
 
   load();
+
+  // --- Zoom & pan ---
+  const MIN_SCALE = 1;
+  const MAX_SCALE = 5;
+  let scale = 1, tx = 0, ty = 0;
+
+  function applyTransform() {
+    img.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+  }
+
+  function resetZoom() {
+    scale = 1; tx = 0; ty = 0;
+    applyTransform();
+  }
+
+  function zoomAt(clientX, clientY, newScale) {
+    newScale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, newScale));
+    const rect = img.getBoundingClientRect();
+    const cx = clientX - rect.left;
+    const cy = clientY - rect.top;
+    tx -= (cx / scale) * (newScale - scale);
+    ty -= (cy / scale) * (newScale - scale);
+    scale = newScale;
+    applyTransform();
+  }
+
+  // Scroll-to-zoom (desktop / trackpad)
+  const stage = document.getElementById('stage');
+  stage.addEventListener('wheel', (e) => {
+    if (img.style.display === 'none') return;
+    e.preventDefault();
+    const delta = -e.deltaY * 0.01;
+    zoomAt(e.clientX, e.clientY, scale * (1 + delta));
+  }, { passive: false });
+
+  // Pinch-to-zoom and pan (touch)
+  let pinchStartDist = null;
+  let pinchStartScale = 1;
+  let panStart = null; // {x, y, tx, ty}
+  let lastTapTime = 0;
+
+  function touchDist(t1, t2) {
+    return Math.hypot(t1.clientX - t2.clientX, t1.clientY - t2.clientY);
+  }
+  function touchMid(t1, t2) {
+    return { x: (t1.clientX + t2.clientX) / 2, y: (t1.clientY + t2.clientY) / 2 };
+  }
+
+  stage.addEventListener('touchstart', (e) => {
+    if (img.style.display === 'none') return;
+    if (e.touches.length === 2) {
+      pinchStartDist = touchDist(e.touches[0], e.touches[1]);
+      pinchStartScale = scale;
+      panStart = null;
+    } else if (e.touches.length === 1) {
+      const now = Date.now();
+      if (now - lastTapTime < 300) {
+        resetZoom();
+        lastTapTime = 0;
+        return;
+      }
+      lastTapTime = now;
+      if (scale > 1) {
+        panStart = { x: e.touches[0].clientX, y: e.touches[0].clientY, tx, ty };
+      }
+    }
+  }, { passive: true });
+
+  stage.addEventListener('touchmove', (e) => {
+    if (img.style.display === 'none') return;
+    if (e.touches.length === 2 && pinchStartDist != null) {
+      e.preventDefault();
+      const dist = touchDist(e.touches[0], e.touches[1]);
+      const mid = touchMid(e.touches[0], e.touches[1]);
+      zoomAt(mid.x, mid.y, pinchStartScale * (dist / pinchStartDist));
+    } else if (e.touches.length === 1 && panStart) {
+      e.preventDefault();
+      tx = panStart.tx + (e.touches[0].clientX - panStart.x);
+      ty = panStart.ty + (e.touches[0].clientY - panStart.y);
+      applyTransform();
+    }
+  }, { passive: false });
+
+  stage.addEventListener('touchend', (e) => {
+    if (e.touches.length < 2) pinchStartDist = null;
+    if (e.touches.length < 1) panStart = null;
+  }, { passive: true });
+
+  // Double-click reset (desktop)
+  stage.addEventListener('dblclick', () => resetZoom());
 </script>
 </body>
 </html>
