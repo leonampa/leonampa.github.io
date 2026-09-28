@@ -23,9 +23,10 @@
   :root{
     --bg:#14181f;
     --ink:#f4f6fc;
-    --teal-1:#345e7d;
-    --teal-2:#5983a3;
-    --teal-3:#97c2e2;
+    --teal-1:#164f79;
+    --teal-2:#3a719a;
+    --teal-3:#74add8;
+    --teal-4:#97c2e2;
     --accents:#345e7d;
     --card-radius:14px;
     --max-w:960px;
@@ -220,6 +221,7 @@
   .card.c1{ background:var(--teal-1); }
   .card.c2{ background:var(--teal-2); }
   .card.c3{ background:var(--teal-3); }
+  .card.c4{ background:var(--teal-4); }
 
   /* Habitica screenshot needs light padding since it's a UI screenshot, not full-bleed photo */
   .card.c2 .media{
@@ -346,19 +348,31 @@
       <div class="text">
         <h3>Habitica To-Do Sorter</h3>
         <p>A privacy-first, client-side tool that fetches, prioritizes, and summarizes Habitica to-dos locally, with no backend and no external data transmission.</p>
-        <a class="repo-link" href="https://github.com/leonampa/habitica-todo-sorter/tree/main" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+        <a class="repo-link" href="https://github.com/leonampa/habitica-todo-sorter/" target="_blank" rel="noopener">View on GitHub &rarr;</a>
       </div>
     </article>
 
     <article class="card c3 media-right">
       <div class="text">
+        <h3>Segment Timer</h3>
+        <p>A browser-based multi-timer application. Type a duration on the keypad, give the timer a name, and it counts down alongside all your others, with the least time left at the top.</p>
+        <a class="repo-link" href="https://github.com/leonampa/segment-timer" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+      </div>
+      <div class="media">
+        <img src="assets/segment-timer.png" alt="Interface of Segment Timer, with multiple timers running.">
+      </div>
+    </article>
+
+    <article class="card c4 media-left">
+      <div class="media">
+        <img src="assets/terminal.png" alt="Custom Windows WIM deployment utility terminal listing available disks">
+      </div>
+      <div class="text">
         <h3>Automated PC Deployment</h3>
         <p>A deployment script that semi-automates Windows imaging and provisioning across multiple PCs, cutting most manual per-unit setup, paired with a hot-swap system of ready-to-deploy spare units for fast, low-effort future replacements.</p>
         <a class="repo-link" href="https://github.com/leonampa/multinode-windows-deploy" target="_blank" rel="noopener">View on GitHub &rarr;</a>
       </div>
-      <div class="media">
-        <img src="assets/terminal.png" alt="Custom Windows WIM deployment utility terminal listing available disks">
-      </div>
+      
     </article>
 
   </main>
