@@ -3,8 +3,16 @@
 // calendar ID — every guide page (PC, iOS, Android) reads from here.
 window.CALENDARS = [
   {
-    name: "Γενικής",
+    name: "Γ1",
     cid: "MWNjODMxZDliZDZhZGU1OTE0NDk0YjYwMDU0OWE0ZThhOTA5YTEyYmRmNTU1NzM4MDBlNTEzNzZkY2M5YjQzZkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t"
+  },
+  {
+    name: "Γ2",
+    cid: "YjQxNTRhMTMxMDMzZmJkOGIwYzI0YzliOTE3NDk2YjM4MTM1ZGMyNjg1MmY0MmM1MDAxMmZiNWU1Njk2YzkwNkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t"
+  },
+  {
+    name: "Γ3",
+    cid: "ZjUwN2Y0MmM0OWFjZTRhYjNjMmY2YzljMTMyNWQ3NmM1MjczZjQwMDAzYTA3ZjJmZGExNjdlMDcyNDllMTJmZkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t"
   },
   {
     name: "Ανθρωπιστικής Κατεύθυνσης",
