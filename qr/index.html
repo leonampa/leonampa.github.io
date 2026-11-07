@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QR Print</title>
+<style>
+  :root {
+    --bg: #f4f1ea;
+    --card: #fffdf8;
+    --ink: #17150f;
+    --muted: #6d675a;
+    --line: #d9d3c4;
+    --accent: #17150f;
+    --accent-ink: #fffdf8;
+    --focus: #2b59ff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #12110d;
+      --card: #1c1a15;
+      --ink: #f3efe4;
+      --muted: #9a9484;
+      --line: #342f26;
+      --accent: #f3efe4;
+      --accent-ink: #12110d;
+      --focus: #8fa8ff;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.4 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  main {
+    max-width: 30rem;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  h1.app {
+    margin: 0.5rem 0 0;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem; }
+  textarea, input[type="text"] {
+    width: 100%;
+    font: inherit;
+    color: var(--ink);
+    background: var(--card);
+    border: 1.5px solid var(--line);
+    border-radius: 12px;
+    padding: 0.8rem 0.9rem;
+  }
+  textarea { resize: vertical; min-height: 5.5rem; }
+  textarea:focus, input:focus, button:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 1px;
+    border-color: transparent;
+  }
+
+  .qr-frame {
+    background: #fff;           /* QR always dark-on-white so it scans in any theme */
+    border: 1.5px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    padding: 0;                 /* QR runs flush to the frame edges */
+  }
+  .qr-frame img { width: 100%; height: 100%; display: block; image-rendering: pixelated; }
+  .qr-frame .empty { color: #8a8472; font-size: 0.9rem; text-align: center; padding: 1rem; }
+  .qr-frame[data-state="empty"] img, .qr-frame[data-state="error"] img { display: none; }
+  .qr-frame[data-state="ready"] .empty { display: none; }
+
+  button {
+    font: inherit;
+    font-weight: 700;
+    width: 100%;
+    min-height: 3.25rem;
+    border: 0;
+    border-radius: 12px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    cursor: pointer;
+  }
+  button:disabled { opacity: 0.35; cursor: not-allowed; }
+  .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: -0.25rem; }
+  button.secondary {
+    min-height: 2.75rem;
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--line);
+    font-weight: 600;
+  }
+  .hint { margin: -0.5rem 0 0; font-size: 0.85rem; color: var(--muted); text-align: center; }
+
+  /* Print-only sheet */
+  #sheet { display: none; }
+
+  @media print {
+    @page { size: auto; margin: 18mm; }
+    html, body { background: #fff !important; }
+    main { display: none; }
+    #sheet {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14mm;
+      color: #000;
+    }
+    #sheet h1 {
+      margin: 8mm 0 0;
+      font: 700 32pt/1.15 ui-sans-serif, system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+      text-align: center;
+      overflow-wrap: anywhere;
+    }
+    #sheet img { width: 100%; height: auto; aspect-ratio: 1; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <div>
+    <label for="content">QR contents</label>
+    <textarea id="content" rows="3" placeholder="https://example.com" autocomplete="off" autocapitalize="off" spellcheck="false"></textarea>
+  </div>
+
+  <div class="qr-frame" id="frame" data-state="empty" role="img" aria-label="QR code preview">
+    <img id="qr" alt="">
+    <div class="empty" id="status">Your QR code will appear here</div>
+  </div>
+
+  <div class="actions">
+    <button id="dl-svg" class="secondary" type="button" disabled>Download SVG</button>
+    <button id="dl-png" class="secondary" type="button" disabled>Download PNG</button>
+  </div>
+
+  <div>
+    <label for="title">Title (printed above the QR)</label>
+    <input id="title" type="text" placeholder="Title" autocomplete="off">
+  </div>
+
+  <button id="print" type="button" disabled>Print</button>
+</main>
+
+<div id="sheet" aria-hidden="true">
+  <h1 id="sheet-title"></h1>
+  <img id="sheet-qr" alt="">
+</div>
+
+<script>
+/* ---------- Minimal QR encoder: byte mode, error correction M, versions 1-40 ---------- */
+const QR = (() => {
+  const ECC_PER_BLOCK = [10,16,26,18,24,16,18,22,22,26,30,22,22,24,24,28,28,26,26,26,26,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28];
+  const NUM_BLOCKS    = [1,1,1,2,2,4,4,4,5,5,5,8,9,9,10,10,11,13,14,16,17,17,18,20,21,23,25,26,28,29,31,33,35,37,38,40,43,45,47,49];
+  const FORMAT_BITS_M = 0;
+
+  const rawModules = v => {
+    let r = (16 * v + 128) * v + 64;
+    if (v >= 2) { const n = Math.floor(v / 7) + 2; r -= (25 * n - 10) * n - 55; if (v >= 7) r -= 36; }
+    return r;
+  };
+  const dataCodewords = v => Math.floor(rawModules(v) / 8) - ECC_PER_BLOCK[v - 1] * NUM_BLOCKS[v - 1];
+
+  const gfMul = (x, y) => { let z = 0; for (let i = 7; i >= 0; i--) { z = (z << 1) ^ ((z >>> 7) * 0x11D); z ^= ((y >>> i) & 1) * x; } return z; };
+  const rsDivisor = deg => {
+    const r = new Array(deg).fill(0); r[deg - 1] = 1; let root = 1;
+    for (let i = 0; i < deg; i++) {
+      for (let j = 0; j < deg; j++) { r[j] = gfMul(r[j], root); if (j + 1 < deg) r[j] ^= r[j + 1]; }
+      root = gfMul(root, 2);
+    }
+    return r;
+  };
+  const rsRemainder = (data, div) => {
+    const r = new Array(div.length).fill(0);
+    for (const b of data) { const f = b ^ r.shift(); r.push(0); div.forEach((c, i) => { r[i] ^= gfMul(c, f); }); }
+    return r;
+  };
+
+  function encode(text) {
+    const bytes = Array.from(new TextEncoder().encode(text));
+    let ver = 1, ccBits;
+    for (;; ver++) {
+      if (ver > 40) throw new Error("Too much text for a QR code");
+      ccBits = ver < 10 ? 8 : 16;
+      if (4 + ccBits + bytes.length * 8 <= dataCodewords(ver) * 8) break;
+    }
+    // bit stream
+    const bits = [];
+    const push = (val, n) => { for (let i = n - 1; i >= 0; i--) bits.push((val >>> i) & 1); };
+    push(0b0100, 4); push(bytes.length, ccBits); bytes.forEach(b => push(b, 8));
+    const capBits = dataCodewords(ver) * 8;
+    push(0, Math.min(4, capBits - bits.length));
+    push(0, (8 - bits.length % 8) % 8);
+    for (let pad = 0xEC; bits.length < capBits; pad ^= 0xEC ^ 0x11) push(pad, 8);
+    const data = [];
+    for (let i = 0; i < bits.length; i += 8) data.push(parseInt(bits.slice(i, i + 8).join(""), 2));
+
+    // error correction + interleave
+    const nb = NUM_BLOCKS[ver - 1], eccLen = ECC_PER_BLOCK[ver - 1];
+    const raw = Math.floor(rawModules(ver) / 8);
+    const nShort = nb - raw % nb, shortLen = Math.floor(raw / nb);
+    const div = rsDivisor(eccLen), blocks = [];
+    for (let i = 0, k = 0; i < nb; i++) {
+      const dat = data.slice(k, k + shortLen - eccLen + (i < nShort ? 0 : 1)); k += dat.length;
+      const ecc = rsRemainder(dat, div);
+      if (i < nShort) dat.push(0);
+      blocks.push(dat.concat(ecc));
+    }
+    const out = [];
+    for (let i = 0; i < blocks[0].length; i++)
+      blocks.forEach((b, j) => { if (i !== shortLen - eccLen || j >= nShort) out.push(b[i]); });
+
+    // matrix
+    const size = ver * 4 + 17;
+    const mod = Array.from({ length: size }, () => new Array(size).fill(false));
+    const fn  = Array.from({ length: size }, () => new Array(size).fill(false));
+    const setFn = (x, y, d) => { mod[y][x] = d; fn[y][x] = true; };
+    const bit = (v, i) => ((v >>> i) & 1) !== 0;
+
+    for (let i = 0; i < size; i++) { setFn(6, i, i % 2 === 0); setFn(i, 6, i % 2 === 0); }
+    const finder = (cx, cy) => {
+      for (let dy = -4; dy <= 4; dy++) for (let dx = -4; dx <= 4; dx++) {
+        const d = Math.max(Math.abs(dx), Math.abs(dy)), x = cx + dx, y = cy + dy;
+        if (x >= 0 && x < size && y >= 0 && y < size) setFn(x, y, d !== 2 && d !== 4);
+      }
+    };
+    finder(3, 3); finder(size - 4, 3); finder(3, size - 4);
+    if (ver > 1) {
+      const n = Math.floor(ver / 7) + 2;
+      const step = ver === 32 ? 26 : Math.ceil((ver * 4 + 4) / (n * 2 - 2)) * 2;
+      const pos = [6];
+      for (let p = size - 7; pos.length < n; p -= step) pos.splice(1, 0, p);
+      for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) {
+        if ((i === 0 && j === 0) || (i === 0 && j === n - 1) || (i === n - 1 && j === 0)) continue;
+        for (let dy = -2; dy <= 2; dy++) for (let dx = -2; dx <= 2; dx++)
+          setFn(pos[i] + dx, pos[j] + dy, Math.max(Math.abs(dx), Math.abs(dy)) !== 1);
+      }
+    }
+    const drawFormat = mask => {
+      const d = (FORMAT_BITS_M << 3) | mask; let rem = d;
+      for (let i = 0; i < 10; i++) rem = (rem << 1) ^ ((rem >>> 9) * 0x537);
+      const b = ((d << 10) | rem) ^ 0x5412;
+      for (let i = 0; i <= 5; i++) setFn(8, i, bit(b, i));
+      setFn(8, 7, bit(b, 6)); setFn(8, 8, bit(b, 7)); setFn(7, 8, bit(b, 8));
+      for (let i = 9; i < 15; i++) setFn(14 - i, 8, bit(b, i));
+      for (let i = 0; i < 8; i++) setFn(size - 1 - i, 8, bit(b, i));
+      for (let i = 8; i < 15; i++) setFn(8, size - 15 + i, bit(b, i));
+      setFn(8, size - 8, true);
+    };
+    drawFormat(0);
+    if (ver >= 7) {
+      let rem = ver;
+      for (let i = 0; i < 12; i++) rem = (rem << 1) ^ ((rem >>> 11) * 0x1F25);
+      const b = (ver << 12) | rem;
+      for (let i = 0; i < 18; i++) {
+        const c = bit(b, i), a = size - 11 + i % 3, d = Math.floor(i / 3);
+        setFn(a, d, c); setFn(d, a, c);
+      }
+    }
+    // codewords, zig-zag
+    for (let i = 0, right = size - 1; right >= 1; right -= 2) {
+      if (right === 6) right = 5;
+      for (let vert = 0; vert < size; vert++) for (let j = 0; j < 2; j++) {
+        const x = right - j, up = ((right + 1) & 2) === 0, y = up ? size - 1 - vert : vert;
+        if (!fn[y][x] && i < out.length * 8) { mod[y][x] = bit(out[i >>> 3], 7 - (i & 7)); i++; }
+      }
+    }
+    // masking
+    const applyMask = m => {
+      for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
+        let inv;
+        switch (m) {
+          case 0: inv = (x + y) % 2 === 0; break;
+          case 1: inv = y % 2 === 0; break;
+          case 2: inv = x % 3 === 0; break;
+          case 3: inv = (x + y) % 3 === 0; break;
+          case 4: inv = (Math.floor(x / 3) + Math.floor(y / 2)) % 2 === 0; break;
+          case 5: inv = x * y % 2 + x * y % 3 === 0; break;
+          case 6: inv = (x * y % 2 + x * y % 3) % 2 === 0; break;
+          default: inv = ((x + y) % 2 + x * y % 3) % 2 === 0;
+        }
+        if (!fn[y][x] && inv) mod[y][x] = !mod[y][x];
+      }
+    };
+    const penalty = () => {
+      let p = 0, dark = 0;
+      const lines = [];
+      for (let y = 0; y < size; y++) { lines.push(mod[y].map(Number).join("")); }
+      for (let x = 0; x < size; x++) { let s = ""; for (let y = 0; y < size; y++) s += +mod[y][x]; lines.push(s); }
+      for (const s of lines) {
+        const runs = s.match(/0+|1+/g);
+        for (const r of runs) if (r.length >= 5) p += 3 + r.length - 5;
+        for (const pat of ["10111010000", "00001011101"]) {
+          for (let i = s.indexOf(pat); i !== -1; i = s.indexOf(pat, i + 1)) p += 40;
+        }
+      }
+      for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
+        if (mod[y][x]) dark++;
+        if (x < size - 1 && y < size - 1 && mod[y][x] === mod[y][x+1] && mod[y][x] === mod[y+1][x] && mod[y][x] === mod[y+1][x+1]) p += 3;
+      }
+      const total = size * size;
+      p += (Math.ceil(Math.abs(dark * 20 - total * 10) / total) - 1) * 10;
+      return p;
+    };
+    let best = 0, bestP = Infinity;
+    for (let m = 0; m < 8; m++) {
+      applyMask(m); drawFormat(m);
+      const p = penalty();
+      if (p < bestP) { bestP = p; best = m; }
+      applyMask(m);
+    }
+    applyMask(best); drawFormat(best);
+    return mod;
+  }
+
+  function toSvg(mod, quiet = 4) {
+    const n = mod.length, dim = n + quiet * 2;
+    let d = "";
+    for (let y = 0; y < n; y++) {
+      for (let x = 0; x < n; x++) {
+        if (!mod[y][x]) continue;
+        let w = 1; while (x + w < n && mod[y][x + w]) w++;
+        d += `M${x + quiet},${y + quiet}h${w}v1h-${w}z`; x += w - 1;
+      }
+    }
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${dim} ${dim}" shape-rendering="crispEdges">` +
+           `<rect width="${dim}" height="${dim}" fill="#fff"/><path d="${d}" fill="#000"/></svg>`;
+  }
+  return { encode, toSvg };
+})();
+
+/* ---------- UI ---------- */
+const $ = id => document.getElementById(id);
+const content = $("content"), title = $("title"), frame = $("frame"),
+      qr = $("qr"), status = $("status"), printBtn = $("print"),
+      sheetTitle = $("sheet-title"), sheetQr = $("sheet-qr");
+const BASE_TITLE = document.title;
+
+const dlSvg = $("dl-svg"), dlPng = $("dl-png");
+let current = null; // { mod, svg } for the code being shown
+
+function setReady(on) { printBtn.disabled = dlSvg.disabled = dlPng.disabled = !on; }
+
+function render() {
+  const text = content.value;
+  current = null;
+  if (!text) {
+    frame.dataset.state = "empty"; status.textContent = "Your QR code will appear here";
+    qr.removeAttribute("src"); sheetQr.removeAttribute("src"); setReady(false); return;
+  }
+  try {
+    const mod = QR.encode(text), svg = QR.toSvg(mod, 0); // quiet zone 0: flush to the edges
+    current = { mod, svg };
+    qr.src = sheetQr.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+    qr.alt = sheetQr.alt = "QR code for: " + text.slice(0, 80);
+    frame.dataset.state = "ready"; setReady(true);
+  } catch (e) {
+    frame.dataset.state = "error"; status.textContent = e.message; setReady(false);
+  }
+}
+
+function save(blob, ext) {
+  const name = (title.value.trim() || "qr").replace(/[\\/:*?"<>|]+/g, "-").slice(0, 80);
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = `${name}.${ext}`;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+dlSvg.addEventListener("click", () => {
+  if (current) save(new Blob([current.svg], { type: "image/svg+xml" }), "svg");
+});
+dlPng.addEventListener("click", () => {
+  if (!current) return;
+  const n = current.mod.length, px = Math.max(1, Math.ceil(1024 / n)); // whole pixels per module = crisp
+  const cv = document.createElement("canvas"); cv.width = cv.height = n * px;
+  const g = cv.getContext("2d");
+  g.fillStyle = "#fff"; g.fillRect(0, 0, cv.width, cv.height);
+  g.fillStyle = "#000";
+  current.mod.forEach((row, y) => row.forEach((on, x) => { if (on) g.fillRect(x * px, y * px, px, px); }));
+  cv.toBlob(b => b && save(b, "png"), "image/png");
+});
+function syncTitle() { sheetTitle.textContent = title.value.trim(); sheetTitle.hidden = !title.value.trim(); }
+
+content.addEventListener("input", render);
+title.addEventListener("input", syncTitle);
+printBtn.addEventListener("click", () => window.print());
+// The browser suggests the document title as the PDF filename
+window.addEventListener("beforeprint", () => { document.title = title.value.trim() || "QR code"; });
+window.addEventListener("afterprint",  () => { document.title = BASE_TITLE; });
+syncTitle(); render();
+</script>
+</body>
+</html>
